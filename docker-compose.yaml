@@ -16,8 +16,6 @@ services:
         condition: service_healthy
       migrations:
         condition: service_completed_successfully
-      fixtures:
-        condition: service_completed_successfully
     command: python manage.py runserver 0.0.0.0:8000
 
   migrations: # hostname
@@ -29,16 +27,6 @@ services:
       psql:
         condition: service_healthy
     command: python manage.py migrate
-
-  fixtures: # hostname
-    build:
-      context: .
-      dockerfile: dockerfile
-    image: altec3/testwork
-    depends_on:
-      migrations:
-        condition: service_completed_successfully
-    command: python manage.py loaddata payments.json
 
   psql: # hostname
     image: postgres:15.0-alpine
