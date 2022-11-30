@@ -1,10 +1,8 @@
 version: "3.9"
 
 services:
+
   server: # hostname
-    build:
-      context: .
-      dockerfile: dockerfile
     image: altec3/testwork
     restart: always
     env_file:
@@ -19,9 +17,6 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
 
   migrations: # hostname
-    build:
-      context: .
-      dockerfile: dockerfile
     image: altec3/testwork
     depends_on:
       psql:
