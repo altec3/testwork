@@ -11,7 +11,6 @@ cd testwork
 - скопировать в данную директорию файлы docker-compose.yaml и .env
 - запустить сервер:
 ```
-docker-compose pull
 docker-compose up -d
 ```
 
